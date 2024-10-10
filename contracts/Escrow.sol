@@ -15,7 +15,15 @@ contract Escrow {
     address public inspector;
     address public nftAddress;
 
-    mapping (uint256 => bool) public isListed; 
+    modifier onlySeller() {
+        require(msg.sender == seller, "Only seller can call this method");
+        _;
+    }
+
+    mapping (uint256 => bool) public isListed;
+    mapping (uint256 => uint256) public purchasePrice;
+    mapping (uint256 => uint256) public escrowAmount;
+    mapping (uint256 => address) public buyer; 
 
     constructor (address _nftAddress, address payable _seller, address _inspector, address _lender){
         nftAddress = _nftAddress;
@@ -24,11 +32,14 @@ contract Escrow {
         lender = _lender;
     }
 
-    function list(uint256 _nftID)public{
+    function list(uint256 _nftID, address _buyer, uint256 _purchasePrice, uint256 _escrowAmount )public{
         // Transfer NFT from seller to contract
         IERC721(nftAddress).transferFrom(msg.sender, address(this), _nftID);
 
         isListed[_nftID] = true;
+        purchasePrice[_nftID] = _purchasePrice;
+        escrowAmount[_nftID] = _escrowAmount;
+        buyer[_nftID] = _buyer;
     }
 }
 //1:59:06
