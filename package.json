@@ -38,6 +38,14 @@
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^2.0.0",
     "@openzeppelin/contracts": "^4.7.3",
-    "hardhat": "^2.12.0"
-  }
+    "hardhat": "^2.22.13"
+  },
+  "description": "- Solidity (Writing Smart Contracts & Tests)\r - Javascript (React & Testing)\r - [Hardhat](https://hardhat.org/) (Development Framework)\r - [Ethers.js](https://docs.ethers.io/v5/) (Blockchain Interaction)\r - [React.js](https://reactjs.org/) (Frontend Framework)",
+  "main": "hardhat.config.js",
+  "directories": {
+    "test": "test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
