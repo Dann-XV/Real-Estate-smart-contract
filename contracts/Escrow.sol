@@ -22,4 +22,3 @@ contract Escrow {
         lender = _lender;
     }
 }
-//1:59:06
