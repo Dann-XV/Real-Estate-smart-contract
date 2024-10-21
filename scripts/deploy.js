@@ -7,7 +7,12 @@
 const hre = require("hardhat");
 
 async function main() {
+  // Setup accounts
+  [buyer, seller, inspector, lender] = await ethers.getSigners()
 
+  // Deploy Real Estate
+  const RealEstate = await ethers.getContractFactory('RealEstate')
+  const realEstate = await RealEstate.deploy()
 }
 
 // We recommend this pattern to be able to use async/await everywhere
@@ -16,3 +21,6 @@ main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
+
+
+// 2: 59: 14
